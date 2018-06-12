@@ -120,7 +120,7 @@ open class CDMarkdownParser {
     open func parse(_ markdown: NSAttributedString) -> NSAttributedString {
         let attributedString = NSMutableAttributedString(attributedString: markdown)
         let mutableString = attributedString.mutableString
-        mutableString.replaceOccurrences(of: "\n\n+", with: "\n",
+        mutableString.replaceOccurrences(of: "\n\n\n+", with: "\n\n",
                                          options: .regularExpression,
                                          range: NSRange(location: 0, length: mutableString.length))
         mutableString.replaceOccurrences(of: "&nbsp;", with: " ",
@@ -130,7 +130,7 @@ open class CDMarkdownParser {
         if let regExp = regExp {
             regExp.replaceMatches(in: mutableString, options: [],
                                   range: NSRange(location: 0, length: mutableString.length),
-                                  withTemplate: "")
+                                  withTemplate: "\n")
         }
 
         let range = NSRange(location: 0, length: attributedString.length)
