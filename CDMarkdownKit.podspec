@@ -10,7 +10,7 @@ This Swift framework handles standard markdown parsing along with the ability to
   s.author           = { 'Christopher de Haan' => 'contact@christopherdehaan.me' }
   s.source           = { :git => 'https://github.com/chrisdhaan/CDMarkdownKit.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/dehaan_solo'
-
+  s.swift_version = '5.0'
   s.ios.deployment_target = '8.0'
   s.tvos.deployment_target = '9.0'
   s.requires_arc = true
