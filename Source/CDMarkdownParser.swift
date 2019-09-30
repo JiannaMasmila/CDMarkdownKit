@@ -47,6 +47,13 @@ open class CDMarkdownParser {
     public let code: CDMarkdownCode
     public let syntax: CDMarkdownSyntax
     public let image: CDMarkdownImage
+    public var paragraphStyle: NSParagraphStyle = {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.paragraphSpacing = 3
+        paragraphStyle.paragraphSpacingBefore = 0
+        paragraphStyle.lineSpacing = 1.38
+        return paragraphStyle
+    }()
 
     // MARK: - Escaping Elements
     fileprivate var codeEscaping = CDMarkdownCodeEscaping()
@@ -137,11 +144,7 @@ open class CDMarkdownParser {
         attributedString.addAttribute(NSAttributedString.Key.font, value: font, range: range)
         attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: fontColor, range: range)
         attributedString.addAttribute(NSAttributedString.Key.backgroundColor, value: backgroundColor, range: range)
-        let paraStyle = NSMutableParagraphStyle()
-        paraStyle.paragraphSpacing = 3
-        paraStyle.paragraphSpacingBefore = 0
-        paraStyle.lineSpacing = 1.38
-        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paraStyle, range: range)
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: range)
         var elements: [CDMarkdownElement] = escapingElements
         elements.append(contentsOf: defaultElements)
         elements.append(contentsOf: customElements)
